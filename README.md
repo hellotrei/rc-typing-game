@@ -2,8 +2,6 @@
 
 1 minute Typing speed test game built with React. Test your typing speed online and find out how fast can you type in real world.
 
-## [Website](https://typingspeedtest.now.sh/)
-
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/tgmarinho/README-ecoleta?color=%2304D361">
 
@@ -20,28 +18,11 @@
 </h1>
 
 <h4 align="center"> 
-	🚧  UI CHALLENGE 🚧
+	🚧  REACT CHALLENGE 🚧
 </h4>
 
-## 💻 Expo UI Challenge
+## 💻 Typing Test Game
 
-♻️ This challenge is about what I've implementation while remaking random ⛹️‍♂️ Dribbble mobile UI
-
----
-
-## 🎨 Layout
-
-### Dribbble
-
-<p align="center">
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/dribbble.png">
-
-</p>
-
-### Result
-
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/result.jpeg">
-</p>
+♻️ This challenge is about what I've implementation while remaking type test game based on ReactJS
 
 ---
