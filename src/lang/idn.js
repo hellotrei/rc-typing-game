@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { quotesArray, allowedKeys } from "./lang/indexHelper";
+import { quotesArray2, allowedKeys } from "./indexHelper";
 import { Link } from "react-router-dom";
-import "./App.css";
+import "../App.css";
 
 let interval = null;
 
-const App = () => {
+const IndonesiaScreen = () => {
   const inputRef = useRef(null);
   const outputRef = useRef(null);
   const [lang, setLang] = useState("eng");
@@ -27,7 +27,7 @@ const App = () => {
     const newQuotes = [];
     for (let i = 0; i < 50; i++) {
       newQuotes.push(
-        quotesArray[Math.floor(Math.random() * (2999 - 0 + 1) + 1)]
+        quotesArray2[Math.floor(Math.random() * (2999 - 0 + 1) + 1)]
       );
     }
     setQuote(newQuotes.join(" "));
@@ -105,6 +105,16 @@ const App = () => {
   const handleTab = (e) => {
     if (e.key === "Tab") {
       window.location.reload();
+    }
+  };
+
+  const handleClickLang = () => {
+    if (lang === "eng") {
+      setLang("idn");
+      changeWords();
+    } else {
+      setLang("eng");
+      changeWords();
     }
   };
 
@@ -218,9 +228,9 @@ const App = () => {
               Trei
             </a>
           </div>
-          <Link to="/id" title="Change words module to Indonesia">
+          <Link to="/" title="Change words module to English">
             {" "}
-            🇮🇩{" "}
+            🇬🇧{" "}
           </Link>
         </div>
       </footer>
@@ -228,4 +238,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default IndonesiaScreen;
