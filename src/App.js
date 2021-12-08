@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { quotesArray, allowedKeys } from "./lang/indexHelper";
-import { Link } from "react-router-dom";
 import "./App.css";
 
 let interval = null;
@@ -22,6 +21,7 @@ const App = () => {
   const [accuracy, setAccuracy] = useState(0);
   const [isError, setIsError] = useState(false);
   const [lastScore, setLastScore] = useState("0");
+  const [keyPressed, setKeyPressed] = useState(false);
 
   const changeWords = () => {
     const newQuotes = [];
@@ -65,6 +65,23 @@ const App = () => {
     inputRef.current.focus();
     setTimer();
   };
+
+  function downHandler({ key }) {
+    if (key === "Enter") {
+      setKeyPressed(true);
+      handleStart();
+    } else if (key === "Tab") {
+      window.location.reload();
+    }
+  }
+  // Add event listeners
+  useEffect(() => {
+    window.addEventListener("keydown", downHandler);
+    // Remove event listeners on cleanup
+    return () => {
+      window.removeEventListener("keydown", downHandler);
+    };
+  }, [downHandler]);
 
   const handleKeyDown = (e) => {
     e.preventDefault();
@@ -185,7 +202,7 @@ const App = () => {
                 {input}
               </div>
             )}
-
+            <button></button>
             <div
               className="p-4 mt-4 text-grey mono rounded lead"
               ref={outputRef}
@@ -207,6 +224,15 @@ const App = () => {
       </div>
       <footer className="small text-muted pt-5 pb-2 footer">
         <div className="footer-info text-center">
+          <key>Tab</key> - Refresh Test <key>Enter</key> - Restart Test
+        </div>
+        {/* <div className="footer-info text-center">
+          <Link to="/id" title="Change words module to Indonesia">
+            {" "}
+            🇮🇩{" "}
+          </Link>
+        </div> */}
+        <div className="footer-info text-center">
           <div className="copyright">
             © 2021. Designed and built with
             <span role="img" aria-label="Heart">
@@ -218,10 +244,6 @@ const App = () => {
               Trei
             </a>
           </div>
-          <Link to="/id" title="Change words module to Indonesia">
-            {" "}
-            🇮🇩{" "}
-          </Link>
         </div>
       </footer>
     </div>

@@ -12,14 +12,30 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: rgb(33, 37, 41);
-  text-align: left;
   background-color: rgb(50, 52, 55);
-  margin: 0px;
-  min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+}
+
+key {
+  color: #000000;
+  background-color: #7a7a7a;
+  padding: 0.1rem 0.3rem;
+  margin: 3px 0;
+  border-radius: 0.1rem;
+  display: inline-block;
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 a {
@@ -502,6 +518,13 @@ button {
   }
 }
 @media (min-width: 1200px) {
+  body {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .container {
     max-width: 1140px;
   }
@@ -587,6 +610,10 @@ button {
 
 .quotes.active {
   outline: 0;
+}
+
+.footer-info {
+  margin-top: 10px;
 }
 
 .quotes.active.is-error {
