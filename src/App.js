@@ -224,7 +224,7 @@ const App = () => {
       </div>
       <footer className="small text-muted pt-5 pb-2 footer">
         <div className="footer-info text-center">
-          <key>Tab</key> - Refresh Test <key>Enter</key> - Restart Test
+          <key>Tab</key> - Refresh Test , <key>Enter</key> - Start Test
         </div>
         {/* <div className="footer-info text-center">
           <Link to="/id" title="Change words module to Indonesia">
