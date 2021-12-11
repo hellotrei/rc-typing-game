@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { quotesArray, allowedKeys } from "./lang/indexHelper";
+import { allowedKeys } from "./lang/indexHelper";
+import { en } from "../src/lang/en";
+import { id } from "../src/lang/id";
 import "./App.css";
 
 let interval = null;
@@ -7,7 +9,7 @@ let interval = null;
 const App = () => {
   const inputRef = useRef(null);
   const outputRef = useRef(null);
-  const [lang, setLang] = useState("eng");
+  const [lang, setLang] = useState("");
   const [duration, setDuration] = useState(60);
   const [started, setStarted] = useState(false);
   const [ended, setEnded] = useState(false);
@@ -22,13 +24,21 @@ const App = () => {
   const [isError, setIsError] = useState(false);
   const [lastScore, setLastScore] = useState("0");
   const [keyPressed, setKeyPressed] = useState(false);
+  const [enLang, setEn] = useState(en);
+  const [idLang, setId] = useState(id);
 
   const changeWords = () => {
-    const newQuotes = [];
-    for (let i = 0; i < 50; i++) {
-      newQuotes.push(
-        quotesArray[Math.floor(Math.random() * (2999 - 0 + 1) + 1)]
-      );
+    let newQuotes = [];
+    if (lang === "en") {
+      setLang("id");
+      for (let i = 0; i < 50; i++) {
+        newQuotes.push(idLang[Math.floor(Math.random() * (2999 - 0 + 1) + 1)]);
+      }
+    } else {
+      setLang("en");
+      for (let i = 0; i < 50; i++) {
+        newQuotes.push(enLang[Math.floor(Math.random() * (2999 - 0 + 1) + 1)]);
+      }
     }
     setQuote(newQuotes.join(" "));
     setInput(newQuotes.join(" "));
@@ -36,7 +46,6 @@ const App = () => {
 
   useEffect(() => {
     changeWords();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -224,14 +233,18 @@ const App = () => {
       </div>
       <footer className="small text-muted pt-5 pb-2 footer">
         <div className="footer-info text-center">
-          <key>Tab</key> - Refresh Test , <key>Enter</key> - Start Test
+          <key>Tab</key> - Restart Test , <key>Enter</key> - Start Test
         </div>
-        {/* <div className="footer-info text-center">
-          <Link to="/id" title="Change words module to Indonesia">
-            {" "}
-            🇮🇩{" "}
-          </Link>
-        </div> */}
+        <div className="footer-info text-center">
+          <button
+            onClick={() => {
+              changeWords();
+            }}
+            title="Change words module to Indonesia"
+          >
+            {lang === "en" ? "🇬🇧" : "🇮🇩"}
+          </button>
+        </div>
         <div className="footer-info text-center">
           <div className="copyright">
             © 2021. Designed and built with
